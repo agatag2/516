@@ -1,0 +1,59 @@
+<script>
+
+let shift = prompt ("Enter shift");
+let message = prompt ("Enter text");
+let letter = ""; 
+Novaletter = "";
+Novamessage = "";
+let capital = "YES"; 
+
+// out of range = (<=65 && >=90)|| (<=97 && >=122)
+
+for (i = 0; i < message.length; i++) { 
+  //this line serves to read the whole message, not just the first letter
+  
+  letter = message.charCodeAt(i); 
+  //Line to convert to asci 
+  
+  if ((letter >=65 && letter <=90) || (letter >=97 && letter <=122)) { 
+    Novaletter = letter + (shift % 26);
+    //if the number is large we want to avoid useless repetition 
+    
+    if (letter <=90) {
+      capital = "YES";
+      }
+    else {
+      capital = "NO";
+      }
+      //the program needs to distinguish between capital and lower-case letters
+      
+    if (shift > 0) {
+      //do the shift 
+      
+      if (Novaletter >90 && capital=="YES" || Novaletter >122 && capital=="NO") {
+        Novaletter = Novaletter - 26;
+       }
+    }
+    // one = assigns a value and two== checks whether that IS the value 
+    if (shift < 0) {
+      if(Novaletter <65 && capital=="YES" || Novaletter <97 && capital=="NO") {
+        Novaletter = Novaletter + 26;
+       }
+    }
+   
+    Novaletter = String.fromCharCode(Novaletter); 
+     //to wrap it around to start from 65   
+    }
+  else {
+  Novaletter = String.fromCharCode(letter);
+  }
+  //for the other characters 
+
+Novamessage = Novamessage + Novaletter;
+}
+//Novamessage += Novaletter   = Novamessage = Novamessage + Novaletter
+//message = String.fromCharCode(i); //line to convert back to the letters
+
+alert (Novamessage)
+
+</script>
