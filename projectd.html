@@ -1,0 +1,37 @@
+<script>
+
+
+
+while (true) {
+
+  let input=prompt("Enter string");
+
+  output=input.replace(/([aeiouy]+)/g, "aig$1")
+  .replace(/([AEIOUY]+)/g, "Aig$1")
+     //$1 is the first group in ()
+  .replace(/([^aeiouy])(aig[e])\b/g, "$1e")
+     //the final “e” is always silent
+  .replace("AigA", "Aiga")
+  .replace("AigE", "Aige")
+  .replace("AigI", "Aigi")
+  .replace("AigO", "Aigo")
+  .replace("AigU", "Aigu")
+  .replace("AigY", "Aigy")
+  .replace(/\b([^aeiouy]+)e\b/g, "$1aige")
+     //when "e" is the only vowel letter in the word
+  .replace(/(Aig)([aeiouy])(aig)/, "Aig$2")
+     //to fix Eat, i.e. the vowel group with first Capital letter
+  alert(output);
+
+}
+
+//only vowels can be syllable nuclei; 
+//the letter “y” always makes a vowel sound; 
+//several consecutive vowel letters always make a single vowel sound; 
+//the final “e” is always silent, except when it is the only vowel letter in the word.
+
+
+</script>
+
+
+
